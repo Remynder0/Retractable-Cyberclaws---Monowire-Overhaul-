@@ -6,13 +6,13 @@
 
 ## Overview
 
-**Retractable Cyberclaws** is a gameplay and visual overhaul mod for *Cyberpunk 2077* (designed for the Patch 2.5 In-Game Mod Browser via **mod.io**). Inspired by agile netrunner combat styles from Sasha Yakovleva in the music video ![Let You Down](https://www.youtube.com/watch?v=BnnbP7pCIvQ). This project transforms the **Monowire (`NanoWires`)** into sleek, retractable fingertip **Cyberclaws** that utilize the **Mantis Blades** animation rig and lunge mechanics while preserving 100% of the **Intelligence Skill Tree** synergies.
+**Retractable Cyberclaws** is a gameplay and visual overhaul mod for *Cyberpunk 2077* (designed for the Patch 2.5 In-Game Mod Browser via **mod.io**). Inspired by agile netrunner combat styles from Sasha Yakovleva in the music video [Let You Down](https://www.youtube.com/watch?v=BnnbP7pCIvQ). This project transforms the **Monowire (`NanoWires`)** into sleek, retractable fingertip **Cyberclaws** that utilize the **Mantis Blades** animation rig and lunge mechanics while preserving 100% of the **Intelligence Skill Tree** synergies.
 
 ---
 
-## Core Architecture ("Approach B" Hybrid Design)
+## Core Architecture
 
-Instead of modifying Mantis Blades to behave like a Netrunner weapon, this mod uses the **Monowire (`Items.AdvancedNanoWires*`)** as its database foundation:
+This mod uses the **Monowire (`Items.AdvancedNanoWires*`)** as its database foundation and the Mantis Blade for animations and rigs:
 
 1. **Database & Progression (Monowire Base):**
    * Retains native compatibility with the **Intelligence** attribute and the left-branch Monowire perks (*Siphon*, *Finisher: Live Wire*, RAM recovery on hit).
@@ -48,7 +48,7 @@ Instead of modifying Mantis Blades to behave like a Netrunner weapon, this mod u
 - [ ] Assign vertex weights (`1.000`) strictly to the distal finger bones (`*HandIndex3/4`, `*HandMiddle3/4`, `*HandRing3/4`, `*HandPinky3/4`, `*HandThumb2/3`).
 - [ ] Configure `.mlsetup` / `.mi` shader materials in WolvenKit for polished chrome and matte carbon finishes.
 
-### Milestone 3: TweakDB Hybrid Configuration (Approach B)
+### Milestone 3: TweakDB Hybrid Configuration
 - [ ] Create the TweakDB override file targeting all `Items.AdvancedNanoWires*` records.
 - [ ] Swap the Monowire `entityName`, `appearanceResourceName`, and attack animation sets with the Mantis Blades equivalents.
 - [ ] Retain the `Monowire` / `NanoWires` tags, RAM recovery `OnAttach` packages, and Quickhack `slotPartListPreset`.
@@ -60,7 +60,7 @@ Instead of modifying Mantis Blades to behave like a Netrunner weapon, this mod u
 
 ### Milestone 5: Cloud Validation & Mod.io Release
 - [ ] Convert all `.yaml` / `.tweak` files into strict `.json` format using `redmod.exe cloud-validation`.
-- [ ] Test the packaged mod locally inside `Cyberpunk 2077/r6/c77/edgerunner_cyberclaws/`.
+- [ ] Test the packaged mod locally inside `Cyberpunk 2077/r6/c77/retractable_cyberclaws/`.
 - [ ] Capture high-resolution in-game screenshots and prepare branding-compliant promotional text.
 - [ ] Submit the package to **mod.io** for CDPR QA verification across PC and consoles.
 
@@ -69,11 +69,11 @@ Instead of modifying Mantis Blades to behave like a Netrunner weapon, this mod u
 ## Repository Directory Structure
 
 ```text
-edgerunner-cyberclaws/
+retractable-cyberclaws/
 ├── raw_assets/                        # Blender (.blend, .glb) source files (excluded from final build)
 ├── build/                             # Compiled mod ready for local testing (r6/c77/) and mod.io upload
 │   └── edgerunner_cyberclaws/
-│       ├── edgerunner_cyberclaws.archive   # Compiled 3D meshes & materials
+│       ├── retractable_cyberclaws.archive   # Compiled 3D meshes & materials
 │       └── tweaks/
 │           └── cyberclaws_tweak.json       # Cloud-validated JSON TweakDB overrides
 ├── docs/
@@ -89,12 +89,12 @@ edgerunner-cyberclaws/
 ### 1. Validate and Convert Tweaks to JSON
 Run the official REDmod CLI tool to convert TweakDB files into the `mod.io` required `.json` format:
 ```bash
-redmod.exe cloud-validation -target-platform=windows -directory="build/edgerunner_cyberclaws"
+redmod.exe cloud-validation -target-platform=windows -directory="build/retractable_cyberclaws"
 ```
 
 ### 2. Local Testing Path (Patch 2.5+)
-Copy the contents of `build/edgerunner_cyberclaws/` into:
+Copy the contents of `build/retractable_cyberclaws/` into:
 ```text
-<Cyberpunk 2077 Install Dir>/r6/c77/edgerunner_cyberclaws/
+<Cyberpunk 2077 Install Dir>/r6/c77/retractable_cyberclaws/
 ```
 Enable the mod via the in-game **Mods** menu at the main title screen.
